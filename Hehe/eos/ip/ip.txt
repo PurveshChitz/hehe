@@ -1,0 +1,48 @@
+To change ip address of bbb follow following steps,
+
+1. boot bbb and go to beaglebone prompt using minicom
+2. go to /etc/networks folder
+
+       cd /etc/networks
+3. open file named interfaces
+      vi interfaces
+4. write below line by pressing insert key below primary interfaces section
+auto eth0
+iface eth0 inet static
+address 192.168.1.80
+netmask 255.255.255.0
+gateway 192.168.1.1
+
+red colour highlighted is new ip address to be set. accordingly gateway is 192.168.1.1
+Note:- do not change 192.168
+
+5. Then come back to core beaglebone prompt
+cd\
+
+6. go to  /opt/scripts/boot
+
+cd /opt/scripts/boot
+
+7. open   am335x_evm.sh file
+change "192.168.7.2" to "192.168.1.80"
+
+save file
+
+8. Then come back to core beaglebone prompt
+cd\
+
+9. go to /etc folder
+
+cd /etc
+
+10. open udhcpd.conf file
+
+change "192.168.7.2" to "192.168.1.80" 
+
+make change at start and end both places
+
+
+
+once all the steps are done. Reboot bbb by pulgging out usb cable and again connecting it to pc.
+
+run ifconfig command and see th new ip address.
